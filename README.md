@@ -7,3 +7,4 @@ Read [PHILOSOPHY.md](./PHILOSOPHY.md) for audience, constraints, threat model, a
 ## Recipes
 
 - [Generate a random password (charset)](./recipes/passwords/random-charset.md)
+- [Deterministic site password (epiphyte-pw/1)](./recipes/passwords/epiphyte-pw-1.md)
