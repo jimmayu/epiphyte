@@ -49,6 +49,7 @@ This is not for average consumers. It is also not for people who can freely `bre
 | Deterministic site passwords | **Yes** — same master + keyword + versioned params → same password on Windows and Mac/Linux |
 | Random password generation | No (fresh entropy each time) |
 | File encrypt / decrypt | Same `Salted__` layout when both sides implement `epiphyte-file/1` (AES-256-CBC + PBKDF2). Not AEAD. |
+| File SHA-256 | **Yes** — same file bytes → same 64 lowercase hex characters |
 
 ## Versioning
 
@@ -114,5 +115,6 @@ Shipped (frozen; do not silently change output):
 1. Charset password generation from OS CSPRNG — `recipes/passwords/random-charset.md`
 2. Versioned deterministic login-password derivation (PBKDF2-HMAC-SHA256) — `recipes/passwords/epiphyte-pw-1.md` (`epiphyte-pw/1`)
 3. File encrypt / decrypt — `recipes/files/epiphyte-file-1.md` (`epiphyte-file/1`, OpenSSL `Salted__` layout)
+4. SHA-256 of a file — `recipes/hash/sha256-file.md` (64 lowercase hex characters; filename not included)
 
 Still in scope, not written yet: small encode / decode helpers.
