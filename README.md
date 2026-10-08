@@ -11,3 +11,4 @@ Editors: [MAINTAINERS.md](./MAINTAINERS.md) — review checklist, not a user gui
 - [Generate a random password (charset)](./recipes/passwords/random-charset.md)
 - [Deterministic site password (epiphyte-pw/1)](./recipes/passwords/epiphyte-pw-1.md)
 - [File encrypt / decrypt (epiphyte-file/1)](./recipes/files/epiphyte-file-1.md)
+- [SHA-256 hash of a file](./recipes/hash/sha256-file.md)

@@ -10,7 +10,7 @@ Produce one high-entropy password from the operating system CSPRNG and print it 
 ## When not to use
 
 - Memorable passphrases / diceware (Epiphyte does not ship wordlists).
-- Deriving the *same* password every time for a site (see the deterministic site-password recipe, when published).
+- Deriving the *same* password every time for a site (see [epiphyte-pw/1](./epiphyte-pw-1.md)).
 - Anything that requires installing tools or using a browser VM.
 
 ## Prerequisites
@@ -33,7 +33,7 @@ It does **not** protect you after you paste the password into a phishing page, l
 | Knob | Value |
 |------|--------|
 | Length | `20` |
-| Alphabet | `A–Z`, `a–z`, `0–9`, and `!@#%^*_+-=?` (74 characters) |
+| Alphabet | `A–Z`, `a–z`, `0–9`, and `!@#%^*_+-=?` (73 characters) |
 | Mapping | Rejection sampling so every alphabet character is equally likely |
 | RNG | `/dev/random` (Unix) / `RandomNumberGenerator` (Windows) |
 
