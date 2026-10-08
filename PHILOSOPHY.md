@@ -6,6 +6,14 @@ No clone required to *use* a recipe. No wordlists. No sidecar files. No custom b
 
 An epiphyte lives on a host without becoming the host. These recipes should work on grandma’s laptop without taking it over.
 
+## Promise
+
+Paste a recipe into a stock terminal on the vast majority of Windows, Linux, and macOS machines. It uses tools the OS already has. Where a recipe promises a result (a derived password, a ciphertext layout), that result is usable on the other platforms.
+
+A construction that only one OS can run is not a default recipe. It may be an advanced badge, clearly marked, and it does not replace the default. Memory-hard password hashes (scrypt, Argon2) are that case: stock Windows .NET can do PBKDF2, not those. Do not omit Windows to “upgrade” a default. Do not raise a frozen PBKDF2 iteration count just to feel stronger — `epiphyte-pw/1` is already at a published minimum (600000 HMAC-SHA256). A higher count would be a new version, a small constant against GPUs, and a rotation of every derived login. Master passphrase strength matters more.
+
+Post-quantum algorithms are not a coat of paint on symmetric recipes. AES-256 and SHA-256 stay the symmetric tools. When a recipe actually needs a public key, prefer a standardized PQC algorithm (ML-KEM, ML-DSA) if that stock tool is already present on the platforms the recipe claims. If it is not, omit the recipe. Do not install a PQC library. Do not drop a working symmetric recipe for lacking a post-quantum label.
+
 ## Audience
 
 Tech-savvy users who understand why local crypto helpers matter — and who are stuck on machines where better tools cannot or should not be installed.
@@ -40,7 +48,7 @@ This is not for average consumers. It is also not for people who can freely `bre
 |-------------|------------------------|
 | Deterministic site passwords | **Yes** — same master + keyword + versioned params → same password on Windows and Mac/Linux |
 | Random password generation | No (fresh entropy each time) |
-| File encrypt / decrypt | Best-effort / later — not a day-one requirement |
+| File encrypt / decrypt | Same `Salted__` layout when both sides implement `epiphyte-file/1` (AES-256-CBC + PBKDF2). Not AEAD. |
 
 ## Versioning
 
@@ -51,7 +59,7 @@ This is not for average consumers. It is also not for people who can freely `bre
 
 ## Threat model ceiling
 
-Epiphyte defaults are aimed at **online attackers** and **GPU guessing of a master passphrase** (high, frozen PBKDF2 iteration counts; optional memory-hard badge where stock OpenSSL scrypt exists).
+Epiphyte defaults are aimed at **online attackers** and at slowing offline guessing of a master passphrase. The portable KDF is PBKDF2-HMAC-SHA256 at a frozen, published iteration floor. That is not GPU-proof. A memory-hard badge may exist later where stock OpenSSL scrypt is already present; it is not the cross-platform default.
 
 We **do not** claim nation-state resistance, “military-grade” security, or protection against a forensic lab with your hardware.
 
@@ -84,7 +92,7 @@ Local copy-paste recipes for:
 
 Thin `ssh-keygen`-style keypair generation may appear later as a narrow exception. It is not a current promise.
 
-## Recipe shape (planned)
+## Recipe shape
 
 One markdown file per recipe, roughly:
 
@@ -97,10 +105,14 @@ One markdown file per recipe, roughly:
 - Verify
 - Notes
 
-Planned layout: `recipes/<category>/<id>.md`, plus a short root README index.
+Layout: `recipes/<category>/<id>.md`, plus a short root README index.
 
-## First recipes (planned, not implemented here)
+## First recipes
 
-1. Charset password generation from OS CSPRNG
-2. Versioned deterministic login-password derivation (PBKDF2-HMAC-SHA256)
-3. File encrypt / decrypt (cross-platform interop later)
+Shipped (frozen; do not silently change output):
+
+1. Charset password generation from OS CSPRNG — `recipes/passwords/random-charset.md`
+2. Versioned deterministic login-password derivation (PBKDF2-HMAC-SHA256) — `recipes/passwords/epiphyte-pw-1.md` (`epiphyte-pw/1`)
+3. File encrypt / decrypt — `recipes/files/epiphyte-file-1.md` (`epiphyte-file/1`, OpenSSL `Salted__` layout)
+
+Still in scope, not written yet: small encode / decode helpers.
