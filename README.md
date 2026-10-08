@@ -4,6 +4,8 @@ A collection of basic security functions written as basic cli commands which are
 
 Read [PHILOSOPHY.md](./PHILOSOPHY.md) for audience, constraints, threat model, and scope.
 
+Editors: [MAINTAINERS.md](./MAINTAINERS.md) — review checklist, not a user guide.
+
 ## Recipes
 
 - [Generate a random password (charset)](./recipes/passwords/random-charset.md)
