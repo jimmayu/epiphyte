@@ -1,6 +1,6 @@
 # Maintainer notes
 
-For people editing this repo. Users should read [PHILOSOPHY.md](./PHILOSOPHY.md) and a recipe, not this file.
+For people editing this repo. Users should read [PHILOSOPHY.md](./PHILOSOPHY.md) and a recipe, not this file. Agents load [AGENTS.md](./AGENTS.md), which points here.
 
 [PHILOSOPHY.md](./PHILOSOPHY.md) is the user-facing constitution: audience, stock tools, threat ceiling, scope, versioning. Do not paste review notes, tool matrices, or unsettled arguments into it. If a rule changes what a user must know to stay safe, it belongs there. If it only changes how we edit, it belongs here.
 
@@ -39,7 +39,9 @@ A recipe may say "Linux / macOS" only for tools named in the recipe, not for the
 - Windows means the .NET APIs named in the recipe (for `/1` password and file recipes: `Rfc2898DeriveBytes` with `HashAlgorithmName.SHA256`). No SHA1 fallback.
 - Same *documented* parameters must match across platforms when the recipe promises that. Same binary is not required.
 
-Record the tool version you actually ran in the PR. Do not invent a supported-version matrix you have not executed.
+Record the tool family and major version you actually ran (`Windows PowerShell 5.1`, `OpenSSL 3`, `sha256sum` from coreutils). Do not invent a supported-version matrix you have not executed. Do not publish a Windows build revision, cumulative-update number, username, home path, hostname, prompt, or temp-folder name. A local check transcript stays untracked.
+
+Before every commit and PR body, search the diff for personal and environment details: usernames, home paths, hostnames, prompts, temp-folder names, and OS build revisions. Publish the tool family and major version only. If a match is a published crypto vector or an alphabet character, leave it.
 
 ## Review and vectors
 
